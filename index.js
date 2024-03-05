@@ -17,7 +17,7 @@ const db = mysql.createConnection(
     // prompt user choice list
     inquirer.prompt([{
         type: 'list',
-        name: 'main-menu',
+        name: 'main_menu',
         message: 'What would you like to do? ',
         choices: [
             'View All Departments', 
@@ -29,7 +29,7 @@ const db = mysql.createConnection(
             'Update an Employee'
         ]
     }]).then(answer => {
-        switch (answers.main_menu) {
+        switch (answer.main_menu) {
             case "View All Departments":
                 allDepartments();
                 break;
@@ -56,16 +56,34 @@ const db = mysql.createConnection(
  };
  
  const allDepartments = () => {
+
     console.log("\n Viewing All Departments");
     
+    db.query('SELECT * FROM department', function (err, data) {
+      console.table(data);
+   
+      mainMenu();
+    });
+
  }
 
  const addDepartment = () => {
+
     console.log("\n Adding a Department");
+
+    
  }
 
  const allRoles = () => {
+
     console.log("\n Viewing All Roles");
+
+    db.query('SELECT * FROM roles', function (err, data) {
+        console.table(data);
+  
+        mainMenu();
+      });
+
  }
 
  const addRole = () => {
@@ -74,6 +92,14 @@ const db = mysql.createConnection(
 
  const allEmployees = () => {
     console.log("\n Viewing All Employees");
+
+    db.query('SELECT * FROM employee', function (err, data) {
+
+        console.table(data);
+  
+        mainMenu();
+
+      });
  }
 
  const addEmployee = () => {
