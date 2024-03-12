@@ -30,4 +30,4 @@ Learning SQL (Structured Query Language) holds paramount importance in the realm
 
 
 ## [CMS Employee Tracker Repository](https://github.com/MargauxJenica/employee-tracker)
-## [ Walkthrough ]()
+## [ Walkthrough ](https://drive.google.com/file/d/1lbhjm8FexEIld6wccckkwk6B9WGDX3R9/view?usp=share_link)
