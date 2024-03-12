@@ -233,11 +233,45 @@ const addRole = () => {
         });
 };
 
-
 // UPDATE AN EMPLOYEE
-//  const updateEmployee = () => {
+const updateEmployee = async () => {
+    // get all roles 
+    const roles = await getRoles();
+    // get all the employees
+    const employees = await getEmployees();
 
-//  };
+    inquirer
+        .prompt([
+            {
+                type: 'list',
+                message: "Which employee's role do you want to update?",
+                name: 'selected_employee',
+                choices: employees,
+            },
+        ]).then(employeeAnswer => {
+            const selectedEmployeeId = employeeAnswer.selected_employee;
+
+            inquirer.prompt([
+                {
+                    type: 'list',
+                    message: 'Select the new role:',
+                    name: 'new_role',
+                    choices: roles,
+                },
+            ]).then(roleAnswer => {
+                const newRoleId = roleAnswer.new_role;
+
+                db.query(`UPDATE employee SET roles_id = ${newRoleId} WHERE id = ${selectedEmployeeId}`, (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+                    console.log('Employee role updated');
+                    mainMenu();
+                });
+            });
+        });
+};
 
 // get list of roles
 const getRoles = () => {
@@ -249,7 +283,7 @@ const getRoles = () => {
             } else {
                 const roleList = roles.map(role => ({
                     name: role.title,
-                    value: role.id, // or any other unique identifier
+                    value: role.id, 
                 }));
                 resolve(roleList);
             }
@@ -258,7 +292,6 @@ const getRoles = () => {
 };
 
 // get list of employees
-
 const getEmployees = () => {
     return new Promise((resolve, reject) => {
         db.query('SELECT * FROM employee', (err, employees) => {
@@ -268,7 +301,7 @@ const getEmployees = () => {
             } else {
                 const employeeList = employees.map(employee => ({
                     name: `${employee.last_name}, ${employee.first_name}`,
-                    value: employee.id, // or any other unique identifier
+                    value: employee.id, 
                 }));
                 resolve(employeeList);
             }
