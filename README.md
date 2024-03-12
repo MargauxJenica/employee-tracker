@@ -15,3 +15,19 @@ In this SQL Challenge: Employee Tracker assignment, participants are tasked with
 
 Learning SQL (Structured Query Language) holds paramount importance in the realm of data management and analytics. SQL is the universal language for interacting with relational databases, enabling individuals to efficiently retrieve, manipulate, and manage data. It forms the backbone of data-driven applications, allowing seamless communication with databases to extract valuable insights and make informed decisions. Proficiency in SQL is crucial for database administrators, data analysts, and software developers, as it empowers them to design and maintain databases, execute complex queries, and ensure data integrity. 
 
+## Final Product
+### Main Menu
+![ Main Menu ](/images/mainMenu.png)
+
+### View All Departments
+![ View All Departments ](/images/allDept.png)
+
+### View All Roles
+![ View All Roles ](/images/allRoles.png)
+
+### View All Employees
+![ View All Employees ](/images/allEmployees.png)
+
+
+## [CMS Employee Tracker Repository](https://github.com/MargauxJenica/employee-tracker)
+## [ Walkthrough ]()
